@@ -21,7 +21,7 @@ info:
     country: ${user.country}
 
 management:
-  endpoint:
+  endpoints:
     web:
       exposure:
         include: '*'
