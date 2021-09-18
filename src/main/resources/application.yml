@@ -6,3 +6,18 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+
+managment:
+  endpoint:
+    web:
+      exposure:
+        include: '*'
+
+# ACTUATOR INFO
+info:
+  app:
+    name: @projecct.name@
+    version: @project.version@
+    profile: ${spring.profiles.active}
+  serverInfo:
+    os: ${os.name}
