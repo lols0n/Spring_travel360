@@ -11,7 +11,7 @@ managment:
   endpoint:
     web:
       exposure:
-        include: '*'
+        include: info,health
 
 # ACTUATOR INFO
 info:
