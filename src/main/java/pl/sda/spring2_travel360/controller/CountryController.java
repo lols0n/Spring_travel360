@@ -1,10 +1,7 @@
 package pl.sda.spring2_travel360.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.sda.spring2_travel360.dto.CountryDto;
 import pl.sda.spring2_travel360.request.AddCountryRequest;
 import pl.sda.spring2_travel360.response.GetCountriesResponse;
@@ -24,7 +21,7 @@ public class CountryController {
     }
 
     @PostMapping
-    public void addCountry(AddCountryRequest request) {
+    public void addCountry(@RequestBody AddCountryRequest request) {
         var countryDto = CountryDto.builder()
                 .name(request.getCountry())
                 .build();
