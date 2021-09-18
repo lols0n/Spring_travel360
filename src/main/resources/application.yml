@@ -7,17 +7,19 @@ spring:
     hibernate:
       ddl-auto: update
 
-managment:
-  endpoint:
-    web:
-      exposure:
-        include: info,health
-
 # ACTUATOR INFO
 info:
   app:
-    name: @projecct.name@
+    name: @project.name@
     version: @project.version@
     profile: ${spring.profiles.active}
   serverInfo:
     os: ${os.name}
+    osVersion: ${os.version}
+
+
+management:
+  endpoint:
+    web:
+      exposure:
+        include: '*'
