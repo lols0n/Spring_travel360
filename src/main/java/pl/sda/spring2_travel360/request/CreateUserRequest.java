@@ -8,7 +8,7 @@ import javax.validation.constraints.*;
 @Data
 public class CreateUserRequest {
 
-    @NonNull
+    @NotNull
     @NotEmpty
     private String login;
 
@@ -24,6 +24,8 @@ public class CreateUserRequest {
     @Email
     private String email;
 
-    @Pattern(regexp = "^(\\+\\d{1,3}( )?)?((\\(\\d{3}\\))|\\d{3})[- .]?\\d{3}[- .]?\\d{4}$")
+    @Pattern(regexp = "^(\\d{3}[- .]?){2}\\d{3}$")
     private String phoneNumber;
+
+    private String confirmendEmail;
 }
