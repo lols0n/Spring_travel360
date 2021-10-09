@@ -6,10 +6,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-  security:
-    user:
-      name: admin
-      password: admin123
+
 
   mail:
     host: smtp.gmail.com
