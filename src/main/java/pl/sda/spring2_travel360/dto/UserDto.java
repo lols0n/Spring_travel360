@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -14,12 +16,13 @@ public class UserDto {
 
     private Long id;
     private String login;
-
-    private String email;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL) //password sie nie wyswietli przy metodzie get
     private String password;
+    private String email;
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private boolean confirmedEmail;
+    private boolean confirmationStatus;
+    private String confirmationId;
+    private LocalDateTime validTo;
 }

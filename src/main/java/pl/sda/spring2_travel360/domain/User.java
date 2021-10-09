@@ -3,6 +3,7 @@ package pl.sda.spring2_travel360.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "travelUser")
@@ -24,5 +25,7 @@ public class User {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private boolean confirmedEmail;
+    private boolean confirmationStatus;
+    private String confirmationId;
+    private LocalDateTime validTo;
 }

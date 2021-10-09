@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NonNull;
 
 import javax.validation.constraints.*;
+import java.time.LocalDateTime;
 
 @Data
 public class CreateUserRequest {
@@ -27,5 +28,7 @@ public class CreateUserRequest {
     @Pattern(regexp = "^(\\d{3}[- .]?){2}\\d{3}$")
     private String phoneNumber;
 
-    private String confirmendEmail;
+    private boolean confirmationStatus;
+    private String confirmationId;
+    private LocalDateTime validTo;
 }

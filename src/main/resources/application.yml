@@ -6,6 +6,25 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  security:
+    user:
+      name: admin
+      password: admin123
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: sda.pawel.rzeszow@gmail.com
+    password: supergigahaslo9
+    default-encoding: UTF-8
+    protocol: smtp
+    properties:
+      auth: true
+      starttls.enable: true
+      ssl.trust: smtp.gmail.com
+      mail.smtp.starttls.enable: true
+      mail.smtp.auth: true
+
 
 # ACTUATOR INFO
 info:

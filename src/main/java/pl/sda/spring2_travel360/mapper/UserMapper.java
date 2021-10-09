@@ -6,7 +6,7 @@ import pl.sda.spring2_travel360.dto.UserDto;
 
 @Service
 public class UserMapper {
-// tu nie mapujemu hasla
+// tu nie mapujemy hasla
     public UserDto mapUserToDto(User user) {
         return UserDto.builder()
                 .id(user.getId())
@@ -15,6 +15,8 @@ public class UserMapper {
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
                 .phoneNumber(user.getPhoneNumber())
+                .confirmationStatus(user.isConfirmationStatus())
+                .confirmationId(user.getConfirmationId())
                 .build();
     }
 
@@ -26,6 +28,8 @@ public class UserMapper {
                 .email(userDto.getEmail())
                 .password(userDto.getPassword())
                 .phoneNumber(userDto.getPhoneNumber())
+                .confirmationStatus(userDto.isConfirmationStatus())
+                .confirmationId(userDto.getConfirmationId())
                 .build();
     }
 }

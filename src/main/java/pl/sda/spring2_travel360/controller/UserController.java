@@ -1,12 +1,12 @@
 package pl.sda.spring2_travel360.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.sda.spring2_travel360.dto.CountryDto;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import pl.sda.spring2_travel360.dto.UserDto;
-import pl.sda.spring2_travel360.request.AddCountryRequest;
 import pl.sda.spring2_travel360.request.CreateUserRequest;
-import pl.sda.spring2_travel360.response.GetCountriesResponse;
+import pl.sda.spring2_travel360.response.GetUserDetails;
 import pl.sda.spring2_travel360.response.GetUsersResponse;
 import pl.sda.spring2_travel360.service.UserService;
 
@@ -15,7 +15,7 @@ import javax.validation.Valid;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/v1/user")
-public class UserController {
+public class UserController extends WebMvcConfigurerAdapter {
 
     private final UserService service;
 
@@ -25,9 +25,12 @@ public class UserController {
         return GetUsersResponse.of(users);
     }
 
-
     @PostMapping
-    public void addUser(@Valid @RequestBody CreateUserRequest request) {
+    public ResponseEntity<Void> addUser(@Valid @RequestBody CreateUserRequest request) {
+        var isExist = service.checkIfUserExists(request.getLogin(), request.getEmail());
+        if (isExist) {
+            ResponseEntity.unprocessableEntity().build();
+        }
         var userDto = UserDto.builder()
                 .login(request.getLogin())
                 .password(request.getPassword())
@@ -37,5 +40,19 @@ public class UserController {
                 .phoneNumber(request.getPhoneNumber())
                 .build();
         service.addUser(userDto);
+        return ResponseEntity.ok().build();
     }
+
+//    @GetMapping("/{id}")
+//    public ResponseEntity<GetUserDetails> getUserDetails(@PathVariable Long id) {
+//        var user = service.getUser(id);
+//        return user.map(userDto -> ResponseEntity.ok(new GetUserDetails(userDto)))
+//                .orElseGet(() -> ResponseEntity.notFound().build());
+//
+//    }
+//
+//    @RequestMapping(value = "/signup", method = RequestMethod.POST)
+//    public
+
+
 }
