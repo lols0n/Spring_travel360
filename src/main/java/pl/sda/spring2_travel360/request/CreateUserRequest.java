@@ -19,7 +19,7 @@ public class CreateUserRequest {
     @NotEmpty
     private String lastName;
 
-    @Size(min = 8, max = 32)
+    @Size
     private String password;
 
     @Email

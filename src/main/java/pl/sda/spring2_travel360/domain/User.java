@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "travelUser")
@@ -28,4 +30,7 @@ public class User {
     private boolean confirmationStatus;
     private String confirmationId;
     private LocalDateTime validTo;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<String> roles = new HashSet<>();
 }
