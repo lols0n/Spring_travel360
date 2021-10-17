@@ -27,7 +27,7 @@ public class User {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private boolean confirmationStatus;
+    private boolean confirmationStatus = false;
     private String confirmationId;
     private LocalDateTime validTo;
 

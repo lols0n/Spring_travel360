@@ -14,6 +14,10 @@ public class TravelUserDetails implements UserDetails {
 
     private final User user;
 
+    public Long getUserId(){
+        return user.getId();
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return user.getRoles()
@@ -49,6 +53,6 @@ public class TravelUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true; //todo do zmiany
+        return user.isConfirmationStatus();
     }
 }

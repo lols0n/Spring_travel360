@@ -42,6 +42,4 @@ management:
       exposure:
         include: '*'
 
-logging:
-  level:
-    root: DEBUG
+
